@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Band Setlist Manager
 
 Een privaat lokaal leerproject voor het beheren van coverbandnummers, repetitiestatus en setlists.
@@ -88,3 +89,4 @@ Die map wordt door Git genegeerd omdat dit jouw privé oefenbestanden zijn.
 ## Volgende kleine stap
 
 Voeg bewerkingsformulieren toe voor nummers en setlists. Dat is de meest nuttige vervolgstap voordat je Spotify-zoek-/importfunctionaliteit toevoegt.
+
