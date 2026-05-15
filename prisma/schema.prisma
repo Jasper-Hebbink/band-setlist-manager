@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum SongStatus {
+  NEW
+  PRACTICING
+  ALMOST_READY
+  READY
+  PAUSED
+}
+
+model Song {
+  id             Int           @id @default(autoincrement())
+  title          String
+  artist         String
+  spotifyTrackId String?
+  spotifyUrl     String?
+  albumArtUrl    String?
+  durationMs     Int?
+  key            String?
+  capo           String?
+  status         SongStatus    @default(NEW)
+  guitar         String?
+  myPart         String?
+  leadPart       String?
+  keysPart       String?
+  notes          String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  setlistSongs   SetlistSong[]
+  documents      SongDocument[]
+
+  @@index([title])
+  @@index([artist])
+  @@index([status])
+}
+
+model SongDocument {
+  id        Int      @id @default(autoincrement())
+  songId    Int
+  title     String
+  fileUrl   String
+  createdAt DateTime @default(now())
+  song      Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@index([songId])
+}
+
+model Setlist {
+  id           Int           @id @default(autoincrement())
+  name         String
+  date         DateTime?
+  notes        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  setlistSongs SetlistSong[]
+}
+
+model SetlistSong {
+  id        Int     @id @default(autoincrement())
+  setlistId Int
+  songId    Int
+  position  Int
+  setlist   Setlist @relation(fields: [setlistId], references: [id], onDelete: Cascade)
+  song      Song    @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@unique([setlistId, position])
+  @@unique([setlistId, songId])
+  @@index([songId])
+}
