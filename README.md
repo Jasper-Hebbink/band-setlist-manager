@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 # Band Setlist Manager
 
-Een privaat lokaal leerproject voor het beheren van coverbandnummers, repetitiestatus en setlists.
+Een professioneel project voor het beheren van coverbandnummers, repetitiestatus en setlists.
+
+Dit project is bedoeld voor serieus gebruik door bands die hun repertoire en repetities overzichtelijk willen beheren.
 
 ## Projectstructuur
 
@@ -75,6 +76,8 @@ GETSONGBPM_API_KEY="your_getsongbpm_api_key"
 ```
 
 De toonsoort-zoekfunctie gebruikt metadata in de stijl van GetSongBPM/GetSongKEY. Als er geen match wordt gevonden, blijft de huidige toonsoort behouden.
+
+Song key and BPM metadata can be provided by [GetSongBPM](https://www.getsongbpm.com).
 
 ## PDF-notities
 
